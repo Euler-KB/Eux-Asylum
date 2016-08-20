@@ -5,12 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UXDictionary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="480" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="139*"/>
-            <ColumnDefinition Width="378*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Background="#FF1D1D1D" Padding="5,0">
+            <ListBox x:Name="lbDictionaryItems" Background="{x:Null}" BorderBrush="#FF303030" Margin="0"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Background="#FF2E2E2E" Padding="5">
+            <TextBlock x:Name="tbDefinition"></TextBlock>
+        </Border>
+        <Grid Grid.Column="1" Background="#FF1D1D1D">
+            <local:SearchBox HorizontalAlignment="Right" Width="259" Margin="0,5,5,5" HeaderTextAlignment="Right"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="5,10,0,5" TextWrapping="Wrap" Text="{Binding SelectedItem, ElementName=lbDictionaryItems, TargetNullValue=Please select a word...}" VerticalAlignment="Bottom" FontSize="21.333" Foreground="#FFE6E6E6" Width="248" FontFamily="Segoe UI Semilight"/>
+        </Grid>
+        <Grid Background="#FF1D1D1D">
+            <local:SearchBox Margin="5,5,5,7" HeaderText="Search word" SearchRequested="OnSearchDictionaryItem" />
+        </Grid>
 
     </Grid>
 </Window>

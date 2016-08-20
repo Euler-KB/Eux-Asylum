@@ -24,5 +24,10 @@ namespace UXDictionary
         {
             InitializeComponent();
         }
+
+        private void OnSearchDictionaryItem(object sender, string e)
+        {
+
+        }
     }
 }
