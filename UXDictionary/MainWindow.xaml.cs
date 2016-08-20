@@ -22,7 +22,6 @@ namespace UXDictionary
     {
         public MainWindow()
         {
-            WriteableBitmap bitmap = new WriteableBitmap(200,300,96,96,PixelFormats.Default , null);
             InitializeComponent();
         }
     }
