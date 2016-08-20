@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UXDictionary.Utilities;
 
 namespace UXDictionary
 {
@@ -25,9 +26,37 @@ namespace UXDictionary
             InitializeComponent();
         }
 
+        private void BeginLoadItems()
+        {
+
+        }
+
+        private void EndLoadItems()
+        {
+
+        }
+
         private void OnSearchDictionaryItem(object sender, string e)
         {
 
+        }
+
+        private async void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            using (BusyState.Begin(BeginLoadItems, EndLoadItems))
+            {
+                try
+                {
+                    //  Load words
+                    var words = await DictionaryItemsDataSource.GetWordsAsync();
+                    lbDictionaryItems.ItemsSource = words;
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
         }
     }
 }
